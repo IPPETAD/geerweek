@@ -45,4 +45,4 @@ notifications:
     - afontaine@ualberta.ca
 
 script:
-  - gradlew connectedInstrumentTest
+  - ./gradlew connectedInstrumentTest
