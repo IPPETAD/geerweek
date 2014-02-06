@@ -38,5 +38,9 @@ before_script:
   - ci/wait_for_emulator.sh
   - adb shell input keyevent 82 &
 
+notifications:
+  email
+    - afontaine@ualberta.ca
+
 script:
   - gradlew connectedInstrumentTest
