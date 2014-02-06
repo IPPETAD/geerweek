@@ -46,5 +46,6 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
 
     public void test() throws Exception {
        Assert.assertTrue(true);
+       Assert.assertFalse(false);
     }
 }
