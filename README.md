@@ -1,7 +1,7 @@
 Geer Week Android App
 =====================
 
-[![Build Status](https://travis-ci.org/ippetad/geerweek.png?branch=master)](https://travis-ci.org/ippetad/geerweek)
+[![Build Status](https://travis-ci.org/IPPETAD/geerweek.png?branch=master)](https://travis-ci.org/IPPETAD/geerweek)
 
 Features
 --------
