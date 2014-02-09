@@ -21,6 +21,7 @@
 
 package ca.ippetad.geerweekapp.ca.ippetad.geerweekapp.view;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -51,6 +52,10 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        /** FRAGMENTS **/
+        final FrameLayout frame = (FrameLayout) findViewById(R.id.container);
+
         _feed = new FeedFragment();
         _events = new EventsFragment();
         _kidnap = new KidnapFragment();
@@ -61,11 +66,6 @@ public class MainActivity extends FragmentActivity {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, _feed).commit();
         }
-
-
-        /** FRAGMENTS **/
-        final FrameLayout frame = (FrameLayout) findViewById(R.id.container);
-
 
 
         /** SLIDING MENU **/
