@@ -1,4 +1,4 @@
-package ca.ippetad.geerweekapp.ca.ippetad.geerweekapp.view;
+package ca.ippetad.geerweekapp.view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -28,4 +28,5 @@ public class FeedFragment extends Fragment {
         return rootView;
     }
 
+    private class CustomArrayAdapter extends ArrayAdapter<Tweet>
 }
