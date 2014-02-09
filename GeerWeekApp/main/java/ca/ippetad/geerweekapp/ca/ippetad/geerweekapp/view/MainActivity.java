@@ -19,7 +19,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package ca.ippetad.geerweekapp;
+package ca.ippetad.geerweekapp.ca.ippetad.geerweekapp.view;
 
 import android.app.Activity;
 import android.app.ActionBar;
@@ -33,8 +33,9 @@ import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import ca.ippetad.geerweekapp.R;
 
-public class FeedActivity extends Activity {
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,28 +44,8 @@ public class FeedActivity extends Activity {
 
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, new DummyFragment())
+                    .add(R.id.container, new FeedFragment())
                     .commit();
-        }
-    }
-
-    /**
-     * A dummy fragment containing a simple view.
-     */
-    public static class DummyFragment extends Fragment {
-
-        public DummyFragment() {}
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
-            ListView listView = (ListView) rootView.findViewById(R.id.listview);
-            listView.setAdapter(new ArrayAdapter(rootView.getContext(), android.R.layout.simple_list_item_1,
-                    new String[]{"twitter feed here"}));
-
-            return rootView;
         }
     }
 
