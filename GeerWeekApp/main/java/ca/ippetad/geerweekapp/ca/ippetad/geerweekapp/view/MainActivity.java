@@ -32,10 +32,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 import ca.ippetad.geerweekapp.R;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
@@ -43,25 +40,36 @@ import java.util.List;
 
 public class MainActivity extends FragmentActivity {
 
+    private FeedFragment _feed;
+    private EventsFragment _events;
+    private KidnapFragment _kidnap;
+    private GodivaFragment _godiva;
+    private MiscFragment _misc;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-   /*     if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, new FeedFragment())
-                    .commit();
-        }*/
+        _feed = new FeedFragment();
+        _events = new EventsFragment();
+        _kidnap = new KidnapFragment();
+        _godiva = new GodivaFragment();
+        _misc = new MiscFragment();
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, _feed).commit();
+        }
 
 
         /** FRAGMENTS **/
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        ViewPagerAdapter pager_adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(pager_adapter);
+        final FrameLayout frame = (FrameLayout) findViewById(R.id.container);
+
+
 
         /** SLIDING MENU **/
-        SlidingMenu slide = new SlidingMenu(this);
+        final SlidingMenu slide = new SlidingMenu(this);
         slide.setMode(SlidingMenu.LEFT);
         slide.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         slide.setBehindOffset(250);
@@ -79,46 +87,37 @@ public class MainActivity extends FragmentActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
                     case 0:
-                        // Home
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.container, _feed)
+                                .addToBackStack(null).commit();
+                        break;
                     case 1:
-                        // Events
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.container, _events)
+                                .addToBackStack(null).commit();
+                        break;
                     case 2:
-                        // Kidnapping
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.container, _kidnap)
+                                .addToBackStack(null).commit();
+                        break;
                     case 3:
-                        // Godiva
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.container, _godiva)
+                                .addToBackStack(null).commit();
+                        break;
                     case 4:
-                        // Misc
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.container, _misc)
+                                .addToBackStack(null).commit();
+                        break;
                 }
+                slide.toggle();
             }
         });
 
     }
 
-    public class ViewPagerAdapter extends FragmentPagerAdapter {
-
-        private FeedFragment _feed;
-
-        public ViewPagerAdapter(FragmentManager fm) {
-            super(fm);
-
-            _feed = new FeedFragment();
-        }
-
-        @Override
-        public Fragment getItem(int i) {
-            switch (i) {
-                case 0:
-                    return _feed;
-
-            }
-            return null;
-        }
-
-        @Override
-        public int getCount() {
-            return 1;
-        }
-    }
     public class CustomArrayAdapter<String> extends ArrayAdapter<String> {
 
 
