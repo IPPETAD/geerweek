@@ -28,5 +28,5 @@ public class FeedFragment extends Fragment {
         return rootView;
     }
 
-    private class CustomArrayAdapter extends ArrayAdapter<Tweet>
+
 }
