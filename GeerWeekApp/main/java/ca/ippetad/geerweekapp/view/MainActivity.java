@@ -19,17 +19,13 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package ca.ippetad.geerweekapp.ca.ippetad.geerweekapp.view;
+package ca.ippetad.geerweekapp.view;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
@@ -51,6 +47,10 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        /** FRAGMENTS **/
+        final FrameLayout frame = (FrameLayout) findViewById(R.id.container);
+
         _feed = new FeedFragment();
         _events = new EventsFragment();
         _kidnap = new KidnapFragment();
@@ -61,11 +61,6 @@ public class MainActivity extends FragmentActivity {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, _feed).commit();
         }
-
-
-        /** FRAGMENTS **/
-        final FrameLayout frame = (FrameLayout) findViewById(R.id.container);
-
 
 
         /** SLIDING MENU **/

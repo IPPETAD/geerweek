@@ -1,4 +1,4 @@
-package ca.ippetad.geerweekapp.ca.ippetad.geerweekapp.view;
+package ca.ippetad.geerweekapp.view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
