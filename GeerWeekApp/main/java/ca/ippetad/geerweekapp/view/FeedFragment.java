@@ -32,10 +32,10 @@ public class FeedFragment extends Fragment {
 
         ListView listView = (ListView) rootView.findViewById(R.id.listview);
         List<Tweet> tweets = new ArrayList<Tweet>();
-        Tweet t = new Tweet();
-        t.name = "Don Iveson";
-        t.msg = "I'll totally check out your hackathon! #yoloswag4jesus #compeclubfuckyeah";
-        tweets.add(t);
+
+        tweets.add(new Tweet("Celine Deon", "Lallldl ad lllalladl #geer lallal  llaaa lalala"));
+        tweets.add(new Tweet("Don Iveson", "I'll totally check out your hackathon! #yoloswag4jesus #geerweek"));
+        tweets.add(new Tweet("Katy Perry", "You're gonna hear me rooARRRR #geerweek"));
         listView.setAdapter(new CustomArrayAdapter(rootView.getContext(), R.layout.twitter_row, tweets));
 
         return rootView;

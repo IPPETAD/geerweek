@@ -9,4 +9,9 @@ public class Tweet {
     public String msg;
     public String URL;
     public String imgURL;
+
+    public Tweet(String name, String msg) {
+        this.name = name;
+        this.msg = msg;
+    }
 }
