@@ -26,7 +26,6 @@ public class EventsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_events, container, false);
 
         ListView listview = (ListView) rootView.findViewById(R.id.listview);
-
         return rootView;
     }
 
