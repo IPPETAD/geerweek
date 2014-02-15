@@ -52,12 +52,9 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /** no title **/
+        /** View **/
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-
         setContentView(R.layout.activity_main);
-
-
 
         /** FRAGMENTS **/
         _frame = (FrameLayout) findViewById(R.id.container);
@@ -96,6 +93,14 @@ public class MainActivity extends FragmentActivity {
             public void onClosed() {
                 MENU_STATE = VISIBLE;
                 invalidateOptionsMenu();
+            }
+        });
+
+        CustomTopBar bar = (CustomTopBar) findViewById(R.id.topbar);
+        bar.setOnDrawerClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                _slide.toggle();
             }
         });
 
@@ -155,21 +160,5 @@ public class MainActivity extends FragmentActivity {
             return view;
         }
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-        if (MENU_STATE == VISIBLE)
-            menu.getItem(0).setVisible(true);
-        else
-            menu.getItem(0).setVisible(false);
-        return super.onCreateOptionsMenu(menu);
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        _slide.toggle();
-        return super.onOptionsItemSelected(item);
     }
 }
