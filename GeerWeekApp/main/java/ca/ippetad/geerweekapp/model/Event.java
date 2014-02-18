@@ -5,8 +5,14 @@ package ca.ippetad.geerweekapp.model;
  */
 public class Event {
 
-    int resource_icon;
-    String name;
-    String time;
-    String location;
+    public int resource_icon;
+    public String name;
+    public String time;
+    public String description;
+    public String location;
+
+    public Event(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 }
