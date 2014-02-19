@@ -60,9 +60,11 @@ public class FeedFragment extends Fragment {
             /* Layout items */
             ImageView profilePic = (ImageView) baseView.findViewById(R.id.profile_pic);
             TextView txtName = (TextView) baseView.findViewById(R.id.txtName);
+            TextView txtHandle = (TextView) baseView.findViewById(R.id.txtHandle);
             TextView txtSubject = (TextView) baseView.findViewById(R.id.txtMessage);
 
             txtName.setText(items.get(position).name);
+            txtHandle.setText("@handle");
             txtSubject.setText(Html.fromHtml(items.get(position).msg));
 
             return baseView;

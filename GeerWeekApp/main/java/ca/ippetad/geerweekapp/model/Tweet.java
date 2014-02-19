@@ -6,6 +6,7 @@ package ca.ippetad.geerweekapp.model;
 public class Tweet {
 
     public String name;
+    public String handle;
     public String msg;
     public String URL;
     public String imgURL;
