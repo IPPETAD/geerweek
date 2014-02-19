@@ -3,6 +3,7 @@ package ca.ippetad.geerweekapp.view;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,9 +34,9 @@ public class FeedFragment extends Fragment {
         ListView listView = (ListView) rootView.findViewById(R.id.listview);
         List<Tweet> tweets = new ArrayList<Tweet>();
 
-        tweets.add(new Tweet("Celine Deon", "Lallldl ad lllalladl #geer lallal  llaaa lalala"));
-        tweets.add(new Tweet("Don Iveson", "I'll totally check out your hackathon! #yoloswag4jesus #geerweek"));
-        tweets.add(new Tweet("Katy Perry", "You're gonna hear me rooARRRR #geerweek"));
+        tweets.add(new Tweet("Celine Deon", "<b>@Jtfinlay</b> Lallldl ad lllalladl <b>#geer</b> lallal  llaaa lalala"));
+        tweets.add(new Tweet("Don Iveson", "I'll totally check out your hackathon! <b>#yoloswag4jesus #geerweek</b>"));
+        tweets.add(new Tweet("Katy Perry", "You're gonna hear me rooARRRR <b>#geerweek</b>"));
         listView.setAdapter(new CustomArrayAdapter(rootView.getContext(), R.layout.twitter_row, tweets));
 
         return rootView;
@@ -62,7 +63,7 @@ public class FeedFragment extends Fragment {
             TextView txtSubject = (TextView) baseView.findViewById(R.id.txtMessage);
 
             txtName.setText(items.get(position).name);
-            txtSubject.setText(items.get(position).msg);
+            txtSubject.setText(Html.fromHtml(items.get(position).msg));
 
             return baseView;
         }
