@@ -11,8 +11,9 @@ public class Event {
     public String description;
     public String location;
 
-    public Event(String name, String description) {
+    public Event(String name, String description, int resourceID) {
         this.name = name;
         this.description = description;
+        this.resource_icon = resourceID;
     }
 }

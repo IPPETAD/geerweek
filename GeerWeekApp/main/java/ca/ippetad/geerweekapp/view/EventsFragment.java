@@ -31,8 +31,17 @@ public class EventsFragment extends Fragment {
         ListView listView = (ListView) rootView.findViewById(R.id.listview);
         List<Event> events = new ArrayList<Event>();
 
-        events.add(new Event("Battle of the Bands", "CompE is going to win this."));
-        events.add(new Event("Movie Night", "We'll also win this."));
+        events.add(new Event("Battle of the Bands", "CompE is going to win this.", R.drawable.botb));
+        events.add(new Event("Movie Night", "We'll also win this.", R.drawable.movie));
+        events.add(new Event("Banquet Night", "bla balb blalblbla blba blabla balblab alblablabl bla bla bla bla", R.drawable.banquet));
+        events.add(new Event("Design Competition", "", R.drawable.design));
+        events.add(new Event("Scavenger Hunt", "", R.drawable.hunt));
+        events.add(new Event("Keg Race", "", R.drawable.kegs));
+        events.add(new Event("After party!!", "", R.drawable.party));
+        events.add(new Event("Shangria", "", R.drawable.shangria));
+        events.add(new Event("Tech Display", "", R.drawable.tech));
+        events.add(new Event("Toboggan Race", "", R.drawable.toboggan));
+        events.add(new Event("Tug Of War", "", R.drawable.tow));
         listView.setAdapter(new CustomArrayAdapter(rootView.getContext(), R.layout.events_row, events));
 
 
@@ -62,7 +71,7 @@ public class EventsFragment extends Fragment {
             TextView txtSubject = (TextView) baseView.findViewById(R.id.txtDescription);
             TextView txtLocation = (TextView) baseView.findViewById(R.id.location);
 
-            eventIcon.setImageResource(R.drawable.aystafy);
+            eventIcon.setImageResource(items.get(position).resource_icon);
             txtName.setText(items.get(position).name);
             txtDate.setText("sometime..");
             txtSubject.setText(items.get(position).description);
