@@ -9,8 +9,8 @@
 
     <ImageView
             android:id="@+id/profile_pic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_width="100px"
+            android:layout_height="100px"/>
 
 
     <TextView
@@ -20,12 +20,24 @@
             android:textStyle="bold"
             android:textSize="18sp"
             android:id="@+id/txtName"/>
+
+    <TextView
+            android:id="@+id/txtHandle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/txtName"
+            android:textSize="14sp"
+            android:textColor="#777777"
+            android:layout_marginLeft="5dp"
+            android:layout_alignBaseline="@id/txtName"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/profile_pic"
             android:layout_below="@id/txtName"
-            android:textSize="16sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="14sp"
             android:id="@+id/txtMessage"/>
 
 
