@@ -56,12 +56,13 @@ public class EventsFragment extends Fragment {
             View baseView = inflater.inflate(R.layout.events_row, parent, false);
 
             /* Layout items */
-            ImageView profilePic = (ImageView) baseView.findViewById(R.id.icon);
+            ImageView eventIcon = (ImageView) baseView.findViewById(R.id.icon);
             TextView txtName = (TextView) baseView.findViewById(R.id.txtName);
             TextView txtDate = (TextView) baseView.findViewById(R.id.date);
             TextView txtSubject = (TextView) baseView.findViewById(R.id.txtDescription);
             TextView txtLocation = (TextView) baseView.findViewById(R.id.location);
 
+            eventIcon.setImageResource(R.drawable.aystafy);
             txtName.setText(items.get(position).name);
             txtDate.setText("sometime..");
             txtSubject.setText(items.get(position).description);
