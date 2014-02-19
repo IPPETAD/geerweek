@@ -26,8 +26,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.*;
 import ca.ippetad.geerweekapp.R;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -42,14 +41,23 @@ public class MainActivity extends FragmentActivity {
     private GodivaFragment _godiva;
     private MiscFragment _misc;
 
+    private int VISIBLE = 0;
+    private int HIDDEN = 1;
+    private int MENU_STATE = VISIBLE;
+
+    private FrameLayout _frame;
+    private SlidingMenu _slide;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /** View **/
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-
         /** FRAGMENTS **/
-        final FrameLayout frame = (FrameLayout) findViewById(R.id.container);
+        _frame = (FrameLayout) findViewById(R.id.container);
 
         _feed = new FeedFragment();
         _events = new EventsFragment();
@@ -64,16 +72,39 @@ public class MainActivity extends FragmentActivity {
 
 
         /** SLIDING MENU **/
-        final SlidingMenu slide = new SlidingMenu(this);
-        slide.setMode(SlidingMenu.LEFT);
-        slide.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-        slide.setBehindOffset(250);
-        slide.setFadeDegree(.9f);
-        slide.setBackgroundColor(Color.parseColor("#444444"));
-        slide.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
-        slide.setMenu(R.layout.layout_menu);
+        _slide = new SlidingMenu(this);
+        _slide.setMode(SlidingMenu.LEFT);
+        _slide.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+        _slide.setBehindOffset(250);
+        _slide.setFadeDegree(.9f);
+        _slide.setBackgroundColor(Color.parseColor("#444444"));
+        _slide.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+        _slide.setMenu(R.layout.layout_menu);
 
-        ListView sliderList = (ListView) slide.getRootView().findViewById(R.id.listview);
+        _slide.setOnOpenedListener(new SlidingMenu.OnOpenedListener() {
+            @Override
+            public void onOpened() {
+                MENU_STATE = HIDDEN;
+                invalidateOptionsMenu();
+            }
+        });
+        _slide.setOnClosedListener(new SlidingMenu.OnClosedListener() {
+            @Override
+            public void onClosed() {
+                MENU_STATE = VISIBLE;
+                invalidateOptionsMenu();
+            }
+        });
+
+        CustomTopBar bar = (CustomTopBar) findViewById(R.id.topbar);
+        bar.setOnDrawerClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                _slide.toggle();
+            }
+        });
+
+        ListView sliderList = (ListView) _slide.getRootView().findViewById(R.id.listview);
         CustomArrayAdapter slider_adapter = new CustomArrayAdapter(this, android.R.layout.simple_list_item_1,
                 new String[]{"Home", "Events", "Kidnapping", "Godiva", "Misc"});
         sliderList.setAdapter(slider_adapter);
@@ -107,7 +138,7 @@ public class MainActivity extends FragmentActivity {
                                 .addToBackStack(null).commit();
                         break;
                 }
-                slide.toggle();
+                _slide.toggle();
             }
         });
 
